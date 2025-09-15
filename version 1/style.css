@@ -1,0 +1,826 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-green: #4A7C59;
+    --dark-green: #3D6B4B;
+    --light-green: #A3D9B1;
+    --earth-brown: #8B4513;
+    --dark-brown: #5a2d0c;
+    --bg-color: #F4F1DE;
+    --text-color: #3D405B;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+}
+
+body.dark-mode {
+    --primary-green: #58A670;
+    --dark-green: #A3D9B1;
+    --light-green: #4A7C59;
+    --earth-brown: #D2B48C;
+    --dark-brown: #8B4513;
+    --bg-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --card-bg: #34495e;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+/* --- Reusable Components --- */
+section {
+    min-height: 100vh;
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-green);
+}
+body.dark-mode h3 {
+    color: var(--light-green);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* --- Header & Navigation --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s;
+}
+
+body.dark-mode header {
+     background: rgba(44, 62, 80, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8%;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-green);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary-green);
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+    color: var(--primary-green);
+}
+
+nav ul li a:hover::after, nav ul li a:focus::after {
+    width: 100%;
+}
+
+.header-toggles button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.header-toggles button:hover {
+    color: var(--primary-green);
+    transform: scale(1.2);
+}
+
+/* --- Section 1: Hero --- */
+#home {
+    justify-content: center;
+    color: white;
+}
+
+#animated-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #2c5d3c, #3d6b4b);
+    z-index: -1;
+    overflow: hidden;
+}
+
+.growing-leaf {
+    position: absolute;
+    background-color: var(--light-green);
+    border-radius: 50%;
+    opacity: 0;
+    animation: growAndFade 5s infinite;
+}
+
+@keyframes growAndFade {
+    0% { transform: scale(0); opacity: 0.7; }
+    80% { transform: scale(1.5); opacity: 0.1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 800px;
+}
+.hero-content h1 {
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+.cta-button:hover {
+    transform: translateY(-3px);
+    background-color: #fff;
+}
+
+
+/* --- Section 2: Plant Guide --- */
+.guide-controls {
+    margin-bottom: 2rem;
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#climate-select {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--primary-green);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.plant-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plant-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+body.dark-mode .plant-card:hover {
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.plant-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.plant-card-content {
+    padding: 1.5rem;
+}
+
+.plant-card-content h3 {
+    margin-top: 0;
+}
+
+.plant-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.plant-card .benefit {
+    font-weight: 600;
+    color: var(--earth-brown);
+}
+
+/* --- Section 3: Soil Info --- */
+.soil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+.soil-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.soil-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.soil-card ul {
+    list-style: none;
+}
+
+.soil-card ul li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.soil-solutions .fa-check-circle {
+    color: var(--primary-green);
+    margin-top: 4px;
+}
+
+.threat-item {
+    margin-bottom: 1.5rem;
+}
+.threat-item span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--earth-brown);
+    border-radius: 10px;
+    animation: animateProgress 2s ease-out forwards;
+}
+
+@keyframes animateProgress {
+    from { width: 0; }
+}
+
+
+/* --- Section 4: Virtual Forest --- */
+#forest-stats {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+#tree-counter {
+    color: var(--primary-green);
+    font-size: 1.5rem;
+}
+
+#forest-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.soil-patch {
+    width: 100%;
+    padding-bottom: 100%; /* Creates a square aspect ratio */
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    position: relative;
+}
+
+.soil-patch:hover {
+    background-color: #7a3d1a;
+    transform: scale(1.1);
+}
+
+.soil-patch.planted {
+    background-color: var(--dark-brown);
+    cursor: default;
+}
+.soil-patch.planted:hover {
+    transform: none;
+}
+.soil-patch.planted::after {
+    content: '🌳';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2vw; /* Responsive tree size */
+    animation: growTree 0.5s ease-out;
+}
+@keyframes growTree {
+    from { transform: translate(-50%, -50%) scale(0); }
+    to { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* --- Section 5: Community Event --- */
+.event-details {
+    display: flex;
+    gap: 2rem;
+    background-color: var(--card-bg);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+.event-details p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#countdown-timer {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+#countdown-timer div {
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+#countdown-timer span {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    display: block;
+}
+
+.event-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+}
+
+.event-registration, .event-progress {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.event-registration h3, .event-progress h3, .event-progress h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#event-registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#event-registration-form input {
+    width: 100%;
+    padding: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#event-registration-form button {
+    padding: 0.8rem;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#event-registration-form button:hover {
+    background-color: var(--dark-green);
+}
+
+.community-goal {
+    width: 100%;
+    height: 30px;
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    margin: 1rem 0 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#community-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--light-green), var(--primary-green));
+    border-radius: 15px;
+    transition: width 0.5s ease-in-out;
+}
+#community-progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--dark-brown);
+    font-weight: 600;
+}
+
+#participant-list {
+    list-style: none;
+    height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+#participant-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--light-green);
+    display: flex;
+    justify-content: space-between;
+}
+#participant-list li span {
+    font-weight: 600;
+    color: var(--primary-green);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 1100px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* --- Section 6: Quiz --- */
+#quiz-container {
+    background-color: var(--card-bg);
+    padding: 2rem 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 700px;
+}
+
+#question-text {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 1rem;
+    border: 2px solid var(--light-green);
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover:not([disabled]) {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+.btn.correct {
+    background-color: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.btn.incorrect {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+#quiz-results {
+    text-align: center;
+}
+#results-title {
+    color: var(--primary-green);
+    font-size: 2rem;
+}
+#results-score {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+#restart-quiz-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restart-quiz-btn:hover {
+    background-color: var(--dark-green);
+}
+
+/* --- Section 7: Pledge Wall --- */
+.pledge-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1100px;
+    text-align: left;
+}
+
+#pledge-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+#pledge-form input, #pledge-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+#pledge-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#pledge-form button {
+    padding: 0.8rem;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#pledge-form button:hover {
+    background-color: var(--dark-green);
+}
+
+#pledge-wall h3 {
+    margin-bottom: 1.5rem;
+}
+#pledge-list {
+    list-style: none;
+    height: 400px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+#pledge-list li {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--light-green);
+}
+
+#pledge-list strong {
+    display: block;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Footer & Reminder Banner --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--dark-brown);
+    color: #f4f1de;
+}
+
+#event-reminder-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 1001;
+}
+#event-reminder-banner a {
+    color: var(--light-green);
+    font-weight: 600;
+}
+#close-reminder-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
+
+    nav ul {
+        display: none; /* Simple hide for mobile, can be replaced with hamburger */
+    }
+
+    .event-container, .pledge-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    section { padding: 80px 5%; }
+    
+    #countdown-timer {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #countdown-timer div {
+        padding: 0.5rem 1rem;
+    }
+    #countdown-timer span {
+        font-size: 1.8rem;
+    }
+
+    .btn-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #forest-grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 5px;
+    }
+    .soil-patch.planted::after {
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .section-subtitle { font-size: 1rem; }
+
+    .guide-controls {
+        flex-direction: column;
+    }
+
+    #quiz-container {
+        padding: 1.5rem;
+    }
+
+    .event-details {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    #event-reminder-banner {
+        width: 90%;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraNova | Plant Today, Protect Tomorrow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="logo">TerraNova</a>
+            <ul>
+                <li><a href="#guide">Plant Guide</a></li>
+                <li><a href="#soil-info">Soil Hub</a></li>
+                <li><a href="#virtual-forest">Virtual Forest</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#pledge">Pledge Wall</a></li>
+            </ul>
+            <div class="header-toggles">
+                <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+                <button id="sound-toggle" aria-label="Toggle sound"><i class="fas fa-volume-mute"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div id="animated-hero-bg"></div>
+            <div class="hero-content">
+                <h1>Plant Today, Protect Tomorrow</h1>
+                <p>Discover the vital connection between plants and soil, and join a global movement to restore our Earth.</p>
+                <a href="#guide" class="cta-button">Start Exploring</a>
+            </div>
+        </section>
+
+        <section id="guide">
+            <h2>Interactive Plant Guide</h2>
+            <p class="section-subtitle">Find the perfect plants for your climate to help nurture the soil.</p>
+            <div class="guide-controls">
+                <label for="climate-select">Select Your Climate Zone:</label>
+                <select id="climate-select">
+                    <option value="all">All Climates</option>
+                    <option value="tropical">Tropical</option>
+                    <option value="dry">Dry / Arid</option>
+                    <option value="temperate">Temperate</option>
+                    <option value="coastal">Coastal</option>
+                </select>
+            </div>
+            <div id="plant-cards-container" class="card-grid">
+                </div>
+        </section>
+
+        <section id="soil-info">
+            <h2>The Living Soil Hub</h2>
+            <p class="section-subtitle">Understand the foundation of life beneath our feet.</p>
+            <div class="soil-grid">
+                <div class="soil-card soil-types">
+                    <h3><i class="fas fa-layer-group"></i> Types of Soil</h3>
+                    <ul>
+                        <li><strong>Loamy:</strong> The gardener's best friend. Rich, fertile, and well-draining.</li>
+                        <li><strong>Sandy:</strong> Gritty texture. Drains quickly, often needs nutrients added.</li>
+                        <li><strong>Clayey:</strong> Sticky and dense. Holds water well but can become compacted.</li>
+                        <li><strong>Black Soil:</strong> Rich in minerals and humus, excellent for crops like cotton.</li>
+                        <li><strong>Alluvial:</strong> Deposited by rivers. Highly fertile and found in plains.</li>
+                    </ul>
+                </div>
+                <div class="soil-card soil-threats">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Major Threats</h3>
+                    <div class="threat-item">
+                        <span>Deforestation</span>
+                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="threat-item">
+                        <span>Soil Erosion</span>
+                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="threat-item">
+                        <span>Chemical Pollution</span>
+                        <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+                <div class="soil-card soil-solutions">
+                    <h3><i class="fas fa-seedling"></i> Protection Practices</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Cover Cropping:</strong> Plant crops to cover soil between main harvests.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Contour Farming:</strong> Plow along the contours of the land to prevent runoff.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Composting:</strong> Enrich soil naturally with organic waste.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Crop Rotation:</strong> Prevent nutrient depletion by changing crops seasonally.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="virtual-forest">
+            <h2>Our Virtual Forest</h2>
+            <p class="section-subtitle">Click on an empty patch to plant a tree. Let's grow a forest together!</p>
+            <div class="forest-stats">
+                <p>Trees Planted by the Community: <strong id="tree-counter">0</strong></p>
+            </div>
+            <div id="forest-grid">
+                </div>
+        </section>
+
+        <section id="quiz">
+            <h2>Are You a Soil Saver?</h2>
+            <p class="section-subtitle">Test your knowledge with this quick quiz!</p>
+            <div id="quiz-container">
+                <div id="question-container">
+                    <p id="question-text">Question goes here...</p>
+                    <div id="answer-buttons" class="btn-grid">
+                        </div>
+                </div>
+                <div id="quiz-feedback" class="hide"></div>
+                <div id="quiz-results" class="hide">
+                    <h3 id="results-title"></h3>
+                    <p id="results-score"></p>
+                    <button id="restart-quiz-btn">Try Again</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pledge">
+            <h2>Take the Pledge</h2>
+            <p class="section-subtitle">Commit to protecting our soil and nurturing our planet.</p>
+            <div class="pledge-container">
+                <form id="pledge-form">
+                    <input type="text" id="pledge-name" placeholder="Your Name" required>
+                    <textarea id="pledge-message" placeholder="e.g., 'I pledge to plant 5 trees this year.'" required></textarea>
+                    <button type="submit">Make My Pledge</button>
+                </form>
+                <div id="pledge-wall">
+                    <h3>Community Pledges</h3>
+                    <ul id="pledge-list">
+                        </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TerraNova. An initiative for a greener planet.</p>
+    </footer>
+    
+    <audio id="nature-sound" loop>
+        <source src="https://www.soundjay.com/nature/sounds/forest-01.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+</body>
+</html>

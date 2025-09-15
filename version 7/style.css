@@ -1,0 +1,177 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-green: #4CAF50; /* Softer Green */
+    --dark-green: #388E3C;
+    --accent-brown: #5D4037;
+    --bg-white: #F9FBF8;
+    --card-white: #FFFFFF;
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --border-light: #E0E0E0;
+    
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --border-radius: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+section {
+    padding: 100px 8%;
+    text-align: center;
+}
+h1, h2, h3, .logo { font-weight: 600; }
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
+h3 { font-size: 1.5rem; color: var(--text-dark); margin-bottom: 1rem; }
+.section-subtitle { font-size: 1.1rem; max-width: 700px; margin: 0 auto 3rem auto; color: #666; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 100%; }
+.hide { display: none !important; }
+
+/* --- Header & Navigation --- */
+header {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+}
+nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 8%; height: 70px; }
+.logo { font-size: 1.8rem; text-decoration: none; color: var(--primary-green); }
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
+nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s; }
+nav ul li a:hover, nav ul li a:focus { color: var(--primary-green); }
+.header-toggles button { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-dark); }
+
+/* --- Buttons --- */
+.cta-button, button[type="submit"], #restart-quiz-btn, .back-button {
+    display: inline-block; padding: 12px 30px; background: var(--primary-green); color: var(--text-light);
+    text-decoration: none; font-weight: 600; border-radius: 50px; transition: all 0.3s ease;
+    border: none; cursor: pointer; box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+}
+.cta-button:hover, button[type="submit"]:hover, #restart-quiz-btn:hover, .back-button:hover {
+    background: var(--dark-green); transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(56, 142, 60, 0.5);
+}
+
+/* --- Hero Section --- */
+#home {
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') no-repeat center center/cover;
+    color: var(--text-light);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+#home::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
+.hero-content { position: relative; z-index: 1; }
+.hero-content p { font-size: 1.2rem; max-width: 600px; margin: 1rem auto 2rem auto; }
+.hero-countdown-container { margin-top: 2.5rem; background: rgba(0,0,0,0.25); padding: 1rem; border-radius: var(--border-radius); backdrop-filter: blur(5px); }
+#countdown-timer { display: flex; gap: 1rem; justify-content: center; }
+#countdown-timer div { color: var(--text-light); text-align: center; }
+#countdown-timer span { font-size: 2.5rem; color: var(--text-light); font-weight: 700; }
+
+/* --- Registration Section --- */
+#register-now { background-color: var(--bg-white); }
+.event-registration-card {
+    background: var(--card-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+#event-registration-form { display: flex; flex-direction: column; gap: 1rem; }
+#event-registration-form input {
+    width: 100%; padding: 0.8rem; font-family: 'Poppins', sans-serif;
+    border: 1px solid var(--border-light); border-radius: 8px;
+}
+
+/* --- Plant Guide & Detail Page --- */
+#guide, #quiz { background-color: #EDF4E7; }
+.guide-controls { margin-bottom: 2rem; background: var(--card-white); padding: 1rem 2rem; border-radius: var(--border-radius); }
+#climate-select { border: 1px solid var(--border-light); border-radius: 8px; padding: 0.5rem; }
+.plant-card-link { text-decoration: none; color: inherit; }
+.plant-card { background: var(--card-white); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); text-align: left; transition: all 0.3s ease; }
+.plant-card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); border-left: 5px solid var(--primary-green); }
+.plant-card img { width: 100%; height: 200px; object-fit: cover; }
+.plant-card-content { padding: 1.5rem; }
+.plant-card .benefit { font-weight: 600; color: var(--accent-brown); }
+
+/* --- Detail Page Specific --- */
+.detail-header { position: static; background: var(--card-white); }
+.back-button { background-color: transparent; border: 2px solid var(--primary-green); color: var(--primary-green); }
+.back-button:hover { background-color: var(--primary-green); color: var(--text-light); box-shadow: none; }
+#plant-detail-main { padding-top: 0; background-color: var(--bg-white); }
+#plant-banner { height: 50vh; width: 100%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; color: var(--text-light); }
+#plant-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); }
+#plant-banner h1 { z-index: 1; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+.plant-info-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
+.detail-card { background: var(--card-white); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+
+/* --- Soil Info Section --- */
+.soil-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%; }
+.soil-card { background-color: var(--card-white); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: left; }
+.soil-visual-list img { width: 80px; height: 80px; object-fit: cover; border-radius: var(--border-radius); }
+.progress { background-color: var(--accent-brown); }
+
+/* --- Event Details Section --- */
+#event { background-color: #EDF4E7; }
+.event-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; width: 100%; max-width: 1200px; text-align: left; }
+.event-progress-card, .event-details-card { background: var(--card-white); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+.community-goal { background-color: var(--border-light); }
+#community-progress-bar { background: var(--primary-green); }
+.event-banner { width: 100%; border-radius: var(--border-radius); margin-top: 1rem; }
+
+/* --- Quiz Section --- */
+#quiz-container { background: var(--card-white); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); max-width: 700px; margin: auto; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.btn { padding: 1rem; border: 2px solid var(--border-light); background-color: transparent; color: var(--text-dark); font-size: 1rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+.btn:hover:not([disabled]) { background-color: var(--primary-green); color: var(--text-light); border-color: var(--primary-green); }
+
+/* --- Pledge Wall Section --- */
+#pledge { background: var(--accent-brown); color: var(--text-light); }
+#pledge h2, #pledge .section-subtitle, #pledge h3 { color: var(--text-light); }
+.pledge-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; }
+#pledge-form, #pledge-wall { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: var(--border-radius); }
+#pledge-list li { background: rgba(255,255,255,0.2); }
+
+/* --- Chatbot Toggle --- */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-green);
+    color: var(--text-light);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+    background-color: var(--dark-green);
+}
+
+/* --- Footer --- */
+footer { text-align: center; padding: 2rem; background: var(--accent-brown); color: var(--text-light); }
+
+@media (max-width: 992px) { nav ul { display: none; } }
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; } h2 { font-size: 2rem; }
+    .pledge-container, .event-container { grid-template-columns: 1fr; }
+    .btn-grid { grid-template-columns: 1fr; }
+}
